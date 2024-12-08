@@ -37,7 +37,12 @@ export const NavBar = () => {
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" />
+            {/* <img src={logo} alt="Logo" /> */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="165" height="30" viewBox="0 0 116 30">
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="22" font-family="Arial Black, sans-serif">
+    VISHAL PUNJ
+  </text>
+</svg>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
