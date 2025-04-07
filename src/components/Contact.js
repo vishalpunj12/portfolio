@@ -23,28 +23,71 @@ export const Contact = () => {
       })
   }
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setButtonText("Sending...");
+  //   let response = await fetch("https://portfolio-backend-2gus.onrender.com/send", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json;charset=utf-8",
+  //     },
+  //     body: JSON.stringify(formDetails),
+  //   });
+  //   setButtonText("Send");
+  //   let result = await response.json();
+  //   console.log("API result:", result);
+
+  //   setFormDetails(formInitialDetails);
+  //   if (result.code == 200) {
+  //     setStatus({ success: true, message: 'Message sent successfully'});
+  //     console.log("Status after success:", { success: true, message: 'Message sent successfully' });
+  //   } else {
+  //     setStatus({ success: false, message: 'Something went wrong, please try again later.'});
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("https://portfolio-backend-2gus.onrender.com/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    console.log("API result:", result);
-
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ success: true, message: 'Message sent successfully'});
-      console.log("Status after success:", { success: true, message: 'Message sent successfully' });
-    } else {
-      setStatus({ success: false, message: 'Something went wrong, please try again later.'});
+  
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+  
+    try {
+      const response = await fetch("https://portfolio-backend-2gus.onrender.com/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(formDetails),
+        signal: controller.signal,
+      });
+  
+      clearTimeout(timeoutId);
+      setButtonText("Send");
+  
+      const result = await response.json();
+      console.log("API result:", result);
+  
+      setFormDetails(formInitialDetails);
+      if (result.code === 200) {
+        setStatus({ success: true, message: 'Message sent successfully' });
+        console.log("Status after success:", { success: true, message: 'Message sent successfully' });
+      } else {
+        setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+      }
+  
+    } catch (error) {
+      clearTimeout(timeoutId);
+      setButtonText("Send");
+  
+      if (error.name === 'AbortError') {
+        setStatus({ success: false, message: 'Request timed out. Please try again.' });
+      } else {
+        setStatus({ success: false, message: 'An error occurred. Please try again.' });
+      }
     }
   };
+  
 
   return (
     <section className="contact" id="connect">
