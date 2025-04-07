@@ -51,23 +51,24 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>Top Projects</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="first">ADP</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                      <Nav.Link eventKey="second">PNS</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                      <Nav.Link eventKey="third">SPR</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     <Tab.Pane eventKey="first">
                       <Row>
-                        {
+                        {/* Old Project template */ }
+                        {/* {
                           projects.map((project, index) => {
                             return (
                               <ProjectCard
@@ -76,14 +77,16 @@ export const Projects = () => {
                                 />
                             )
                           })
-                        }
+                        } */} 
+                        <p>Currently leading Advanced Dedupe Platform (ADP) - A system which is a critical component of customer acquisition journey of Airtel - India's largest telecom provider. My role in this project includes architecture design of the system, managing & delivering high performance APIs and Databases, from understanding business requirements to end 2 end delivery of product. Techstack involved - Golang, Postgres, Kubernetes & Kafka. </p>
+                  
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Tab.Pane eventKey="second">
+                      <p>Preferred Number Service is a project based on providing cloud telephony as a service. Spearheaded the development of pre-call and post-call APIs in Go, enabling seamless handling of real-time call data using Redis and RabbitMQ, supporting over thousands of calls per second.</p>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <p>Developed dynamic UI of seller performance reports on seller.indiamart.com which served as a data visualization tool for end user to gain insight over his performance and business returns by using Indiamart. Tech stack involved – React JS, typescript, ionic framework</p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
