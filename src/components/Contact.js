@@ -26,7 +26,8 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("https://portfolio-backend-2gus.onrender.com/send", {
+    // let response = await fetch("https://portfolio-backend-2gus.onrender.com/send", {
+      let response = await fetch("https://localhost:8080/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
