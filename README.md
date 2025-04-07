@@ -3,7 +3,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Deployment Instructions
--npm run build
+-npm run build from main branch
+-copy build folder
+-add build folder contents in gh-pages branch and push
+- UI will be deployed on https://vishalpunj12.github.io/portfolio
+
 
 
 
